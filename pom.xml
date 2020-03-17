@@ -25,39 +25,23 @@
 				<version>${mule.maven.plugin.version}</version>
 				<extensions>true</extensions>
 				<configuration>
-				<cloudHubDeployment>
-				<uri>https://anypoint.mulesoft.com</uri>
-				<muleVersion>4.2.2</muleVersion>
-				<username>1-mar</username>
-				<password>Password@1</password>
-				<businessGroup>Apisero</businessGroup>
+								<cloudHubDeployment>
+<uri>https://anypoint.mulesoft.com</uri>
+<muleVersion>4.2.2</muleVersion>
+<username>1-mar</username>
+<password>Password@1</password>
+<businessGroup>Apisero</businessGroup>
 
-				<workerType>SMALL</workerType>
-				<region>us-west-1</region>
-				<environment>Sandbox</environment>
-				<applicationName>azure-cicd</applicationName>
-				<properties>
+<workerType>SMALL</workerType>
+<region>us-west-1</region>
+<environment>Sandbox</environment>
+<applicationName>sap-poc</applicationName>
+<properties>
 
-				<anypoint.platform.config.analytics.agent.enabled>true</anypoint.platform.config.analytics.agent.enabled>
-				</properties>
-				</cloudHubDeployment>
-				<executions>
-				<execution>
-				<id>deploy</id>
-				<goals>
-				<goal>deploy</goal>
-				</goals>
-				<configuration>
-				<classifier>mule-application</classifier>
-				</configuration>
-				</execution>
-				</executions>
-			<classifier>mule-application</classifier>
+<anypoint.platform.config.analytics.agent.enabled>true</anypoint.platform.config.analytics.agent.enabled>
+</properties>
+</cloudHubDeployment>
 				<sharedLibraries>
-                        <sharedLibrary>
-                            <groupId>com.sap.conn.idoc</groupId>
-                            <artifactId>com.sap.conn.idoc.sapidoc3</artifactId>
-                        </sharedLibrary>
                     <sharedLibrary>
                             <groupId>com.sap.conn.jco</groupId>
                             <artifactId>com.sap.conn.jco.sapjco3</artifactId>
@@ -65,6 +49,10 @@
                     <sharedLibrary>
                             <groupId>com.sap.conn.jco</groupId>
                             <artifactId>sapjco3</artifactId>
+                        </sharedLibrary>
+                    <sharedLibrary>
+                            <groupId>com.sap.conn.idoc</groupId>
+                            <artifactId>com.sap.conn.idoc.sapidoc3</artifactId>
                         </sharedLibrary>
                     </sharedLibraries>
                 </configuration>
@@ -91,29 +79,7 @@
             <version>5.1.1</version>
             <classifier>mule-plugin</classifier>
         </dependency>
-    	<dependency>
-            <groupId>com.sap.conn.idoc</groupId>
-            <artifactId>com.sap.conn.idoc.sapidoc3</artifactId>
-            <version>3.x.x</version>
-        </dependency>
-    	<dependency>
-            <groupId>com.sap.conn.jco</groupId>
-            <artifactId>com.sap.conn.jco.sapjco3</artifactId>
-            <version>3.x.x</version>
-        </dependency>
-    	<dependency>
-            <groupId>com.sap.conn.jco</groupId>
-            <artifactId>sapjco3</artifactId>
-            <version>3.x.x</version>
-            <classifier>external-library</classifier>
-            <type>dll</type>
-        </dependency>
-    	<dependency>
-            <groupId>org.mule.connectors</groupId>
-            <artifactId>mule-wsc-connector</artifactId>
-            <version>1.5.1</version>
-            <classifier>mule-plugin</classifier>
-        </dependency>
+    	
     </dependencies>
 
 	<repositories>

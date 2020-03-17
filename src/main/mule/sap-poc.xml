@@ -1,25 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<mule xmlns:ee="http://www.mulesoft.org/schema/mule/ee/core" xmlns:wsc="http://www.mulesoft.org/schema/mule/wsc"
-	xmlns:sap="http://www.mulesoft.org/schema/mule/sap"
-	xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+<mule xmlns:ee="http://www.mulesoft.org/schema/mule/ee/core" xmlns:sap="http://www.mulesoft.org/schema/mule/sap"
+	xmlns:http="http://www.mulesoft.org/schema/mule/http"
+	xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
 http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd
-http://www.mulesoft.org/schema/mule/sap http://www.mulesoft.org/schema/mule/sap/current/mule-sap.xsd
-http://www.mulesoft.org/schema/mule/wsc http://www.mulesoft.org/schema/mule/wsc/current/mule-wsc.xsd
-http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/ee/core/current/mule-ee.xsd">
-	<sap:sap-config name="SAP_Config" doc:name="SAP Config" doc:id="ac30ceab-9234-49f2-a5cb-c01685effda1" >
-		<sap:simple-connection-provider-connection username="MULEUSER" password="Welcome@123" systemNumber="00" client="500" applicationServerHost="sqs6ci.isidc.com">
-			<sap:extended-properties >
-				<sap:extended-property key="Djco.trace_level" value="true" />
-			</sap:extended-properties>
-		</sap:simple-connection-provider-connection>
+http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/ee/core/current/mule-ee.xsd
+http://www.mulesoft.org/schema/mule/sap http://www.mulesoft.org/schema/mule/sap/current/mule-sap.xsd">
+	<sap:sap-config name="SAP_Config" doc:name="SAP Config" doc:id="fac84a07-41de-4090-b63b-96f91d6d7c75" >
+		<sap:simple-connection-provider-connection username="MULEUSER" password="Welcome@123" systemNumber="00" client="500" applicationServerHost="sqs6ci.isidc.com" />
 	</sap:sap-config>
-	<http:listener-config name="HTTP_Listener_config" doc:name="HTTP Listener config" doc:id="02f31d5f-b023-4996-9f3b-b07dc01d1686" >
+	<http:listener-config name="HTTP_Listener_config" doc:name="HTTP Listener config" doc:id="db0ca821-ca6c-434d-bf6e-9ad2aa63d955" >
 		<http:listener-connection host="0.0.0.0" port="8081" />
 	</http:listener-config>
-	<flow name="sap-pocFlow" doc:id="aba82d95-8342-4f24-af2a-ba34fc7438ab" >
-		<http:listener doc:name="Listener" doc:id="60d1e781-154b-4013-b665-bcdb62960c3e" config-ref="HTTP_Listener_config" path="sap"/>
-		<ee:transform doc:name="Transform Message" doc:id="7d3395a9-6c61-43f0-bcb8-26874d7a35ae" >
+	<flow name="sap-pocFlow" doc:id="e1ab7f54-a080-41bb-b9f7-3d2c86afe3c9" >
+		<http:listener doc:name="Listener" doc:id="69dac471-2d65-4ca1-bbba-24eb5d21d43a" config-ref="HTTP_Listener_config" path="test"/>
+		<ee:transform doc:name="Transform Message" doc:id="3a17644f-cecc-451a-a8e8-d422bf807066" >
 			<ee:message >
 				<ee:set-payload ><![CDATA[%dw 2.0
 output application/xml
@@ -35,15 +30,14 @@ output application/xml
 }]]></ee:set-payload>
 			</ee:message>
 		</ee:transform>
-		<sap:sync-rfc doc:name="Synchronous Remote Function Call" doc:id="b99172a3-34c4-4a21-8a23-88650bedf726" config-ref="SAP_Config" key="YHDS_GET_BUILDERS"/>
-		<ee:transform doc:name="Transform Message" doc:id="134498f0-7433-49ec-8e08-ce7f7d500991" >
+		<sap:sync-rfc doc:id="9e55d8ab-10a4-44e8-a95d-31f4b63e612b" config-ref="SAP_Config" key="YHDS_GET_BUILDERS"/>
+		<ee:transform doc:name="Transform Message" doc:id="d9f20427-8f17-43b1-8f73-770839a8c5db" >
 			<ee:message >
 				<ee:set-payload ><![CDATA[%dw 2.0
-output application/xml
+output application/json
 ---
 payload]]></ee:set-payload>
 			</ee:message>
 		</ee:transform>
-		<logger level="INFO" doc:name="Logger" doc:id="8ca660f7-9afa-4152-8027-5011010584cc" message="flow ends!!"/>
 	</flow>
 </mule>
