@@ -30,7 +30,7 @@ output application/xml
 }]]></ee:set-payload>
 			</ee:message>
 		</ee:transform>
-		<sap:sync-rfc doc:id="9e55d8ab-10a4-44e8-a95d-31f4b63e612b" config-ref="SAP_Config" key="YHDS_GET_BUILDERS"/>
+		<sap:sync-rfc doc:name="Synchronous Remote Function Call" doc:id="8c5b736c-e3ec-4233-9ca9-d845fdff086f" config-ref="SAP_Config" key="Get Builder for HDS (YHDS_GET_BUILDERS)"/>
 		<ee:transform doc:name="Transform Message" doc:id="d9f20427-8f17-43b1-8f73-770839a8c5db" >
 			<ee:message >
 				<ee:set-payload ><![CDATA[%dw 2.0
