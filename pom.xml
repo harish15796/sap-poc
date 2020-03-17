@@ -52,7 +52,7 @@
 				</configuration>
 				</execution>
 				</executions>
-		<classifier>mule-application</classifier>
+			<classifier>mule-application</classifier>
 				<sharedLibraries>
                         <sharedLibrary>
                             <groupId>com.sap.conn.idoc</groupId>
