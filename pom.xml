@@ -41,20 +41,7 @@
 <anypoint.platform.config.analytics.agent.enabled>true</anypoint.platform.config.analytics.agent.enabled>
 </properties>
 </cloudHubDeployment>
-				<sharedLibraries>
-                    <sharedLibrary>
-                            <groupId>com.sap.conn.jco</groupId>
-                            <artifactId>com.sap.conn.jco.sapjco3</artifactId>
-                        </sharedLibrary>
-                    <sharedLibrary>
-                            <groupId>com.sap.conn.jco</groupId>
-                            <artifactId>sapjco3</artifactId>
-                        </sharedLibrary>
-                    <sharedLibrary>
-                            <groupId>com.sap.conn.idoc</groupId>
-                            <artifactId>com.sap.conn.idoc.sapidoc3</artifactId>
-                        </sharedLibrary>
-                    </sharedLibraries>
+				
                 </configuration>
 			</plugin>
 		</plugins>
